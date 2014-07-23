@@ -1,5 +1,5 @@
  
-/src/main/resources
+In /src/main/resources add these property files:
   - application.properties
   - thymeleaf.properties
   
@@ -16,4 +16,9 @@ application.properties:
     hibernate.show_sql = true
     hibernate.hbm2ddl.auto=update
     entitymanager.packages.to.scan = at.cinephilia
+    
+create a postgres database:
+
+    sudo -u postgres createuser -P username
+    sudo -u postgres createdb -O username dbname
     
