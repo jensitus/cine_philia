@@ -7,18 +7,18 @@ import javax.persistence.*;
  */
 
 @Entity
-@Table(name = "genres")
+@Table(name = "genres") //, uniqueConstraints = {@UniqueConstraint(columnNames = "id"), @UniqueConstraint(columnNames = "name"), @UniqueConstraint(columnNames = "_ID")})
 public class Genre {
 
     @Id
     @GeneratedValue
-    @Column
+    @Column(name = "id", unique = true, nullable = false)
     private short id;
 
-    @Column(name = "name")
+    @Column(name = "name", unique = true)
     private String name;
 
-    @Column(name = "_ID")
+    @Column(name = "_ID", unique = true)
     private String _ID;
 
     public Genre(){

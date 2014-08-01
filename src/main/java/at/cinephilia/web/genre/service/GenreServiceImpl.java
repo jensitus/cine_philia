@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * Created by jens on 27.07.14.
  */
@@ -21,5 +23,11 @@ public class GenreServiceImpl implements GenreService {
     public void addGenre(Genre genre) {
         genreDao.addGenre(genre);
     }
+
+    @Override
+    public List<Genre> genreNames() {
+        return genreDao.genreNames();
+    }
+
 
 }

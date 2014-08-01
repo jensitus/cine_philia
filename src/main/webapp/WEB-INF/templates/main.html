@@ -7,6 +7,10 @@
 <body>
 
 <h3 th:text="${title}">Title</h3>
+<span th:each="genre : ${genres}">
+
+    <span th:text="${genre.name}"></span><br />
+</span>
 
 </body>
 </html>
