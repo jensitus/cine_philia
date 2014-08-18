@@ -21,6 +21,9 @@ public class Genre {
     @Column(name = "_ID", unique = true)
     private String _ID;
 
+    @Column(name = "number")
+    private String number;
+
     public Genre(){
 
     }
