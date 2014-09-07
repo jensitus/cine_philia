@@ -5,9 +5,6 @@ import org.springframework.context.annotation.Import;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
-/**
- * Created by jens on 23.07.14.
- */
 @Configuration
 @Import({ThymeConf.class})
 public class DispatcherConfig extends WebMvcConfigurerAdapter {

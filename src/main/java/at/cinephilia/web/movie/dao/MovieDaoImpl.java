@@ -1,6 +1,6 @@
-package at.cinephilia.web.genre.dao;
+package at.cinephilia.web.movie.dao;
 
-import at.cinephilia.web.model.Genre;
+import at.cinephilia.web.model.Movie;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,12 +8,8 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-/**
- * Created by jens on 27.07.14.
- */
-
 @Repository
-public class GenreDaoImpl implements GenreDao {
+public class MovieDaoImpl implements MovieDao {
 
     @Autowired
     private SessionFactory sessionFactory;
@@ -23,14 +19,12 @@ public class GenreDaoImpl implements GenreDao {
     }
 
     @Override
-    public void addGenre(Genre genre) {
-        getCurrentSession().persist(genre);
+    public List<Movie> getMovies() {
+        return getCurrentSession().createQuery("select _ID from Movie").list();
     }
 
     @Override
-    public List<Genre> genreNames() {
-        return (List<Genre>) getCurrentSession().createQuery("select name from Genre").list();
+    public void addMovie(Movie movie) {
+        getCurrentSession().persist(movie);
     }
-
-
 }

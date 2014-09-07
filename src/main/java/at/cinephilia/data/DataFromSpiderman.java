@@ -34,6 +34,4 @@ public class DataFromSpiderman {
         return url;
     }
 
-
-
 }

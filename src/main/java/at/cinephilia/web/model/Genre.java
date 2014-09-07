@@ -1,4 +1,4 @@
-package at.cinephilia.web.genre.model;
+package at.cinephilia.web.model;
 
 import javax.persistence.*;
 
