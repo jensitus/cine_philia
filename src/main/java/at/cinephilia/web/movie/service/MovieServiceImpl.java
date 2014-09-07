@@ -28,4 +28,9 @@ public class MovieServiceImpl implements MovieService {
     public void addMovie(Movie movie) {
         movieDao.addMovie(movie);
     }
+
+  @Override
+  public Movie loadMovie(final Long movieId) {
+    return movieDao.loadMovieById(movieId);
+  }
 }

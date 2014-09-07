@@ -38,6 +38,8 @@ public class Contribute {
     public Contribute() {
     }
 
+
+
     public Contribute(String _ID, String participant_ID, String movie_ID, String diractor) {
         this._ID = _ID;
         this.participant_ID = participant_ID;
