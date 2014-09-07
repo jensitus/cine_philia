@@ -25,18 +25,19 @@ public class MovieRestController
   private MovieService movieService;
 
 
+
   @ResponseBody
-  @RequestMapping(
-    value = "/{movieId}",
-    method = RequestMethod.GET
-  )
-  public ResponseEntity getMovies(@PathVariable String movieId) throws IOException {
-    Long movieIdLong = Long.parseLong(movieId);
-    Movie ret = this.movieService.loadMovie(movieIdLong);
-    if (ret == null){
-      return new ResponseEntity(HttpStatus.NOT_FOUND);
-    }
-    return new ResponseEntity(ret, HttpStatus.OK);
+ @RequestMapping(
+   value = "/{movieId}",
+   method = RequestMethod.GET
+ )
+ public ResponseEntity getMovies(@PathVariable String movieId) throws IOException {
+  Long movieIdLong = Long.parseLong(movieId);
+  Movie ret = this.movieService.loadMovie(movieIdLong);
+  if (ret == null){
+    return new ResponseEntity(HttpStatus.NOT_FOUND);
   }
+  return new ResponseEntity(ret, HttpStatus.OK);
+}
 
 }

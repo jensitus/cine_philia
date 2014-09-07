@@ -1,0 +1,26 @@
+<!doctype html>
+
+<html ng-app="ng-app" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>movies!</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+    <script src="/js/movies.js"></script>
+</head>
+
+<body>
+<div ng-controller="MovieController as controller">
+    <form>
+        <input type="text" ng-model="movieId" />
+        <button ng-click="controller.loadMovie(movieId)">load!</button>
+    </form>
+    <p>Movie title: {{movie.title}}</p>
+</div>
+<div ng-controller="MovieController">
+    <form>
+        <input type="text" ng-model="movieId" />
+        <button ng-click="controller.loadMovie(movieId)">load!</button>
+    </form>
+    <p>Movie title: {{movie.title}}</p>
+</div>
+</body>
+</html>
