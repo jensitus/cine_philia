@@ -1,6 +1,6 @@
 package at.cinephilia.web.genre.dao;
 
-import at.cinephilia.web.genre.model.Genre;
+import at.cinephilia.web.model.Genre;
 
 import java.util.List;
 

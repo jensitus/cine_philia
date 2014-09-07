@@ -1,7 +1,7 @@
 package at.cinephilia.web.genre.controller;
 
 import at.cinephilia.data.DataFromSpiderman;
-import at.cinephilia.web.genre.model.Genre;
+import at.cinephilia.web.model.Genre;
 import at.cinephilia.web.genre.service.GenreService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

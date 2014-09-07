@@ -1,4 +1,4 @@
-package at.cinephilia.web.genre.model;
+package at.cinephilia.web.model;
 
 import javax.persistence.*;
 
@@ -7,7 +7,7 @@ import javax.persistence.*;
  */
 
 @Entity
-@Table(name = "movies")
+@Table(name = "movies", uniqueConstraints = {@UniqueConstraint(columnNames = "_ID")})
 public class Movie {
 
     @Id
@@ -57,4 +57,12 @@ public class Movie {
     @Column(name = "actors")
     private String[] actors;
 
+    public Movie(String title, String _ID) {
+        this.title = title;
+        this._ID = _ID;
+    }
+
+    public String getTitle() {
+        return title;
+    }
 }
