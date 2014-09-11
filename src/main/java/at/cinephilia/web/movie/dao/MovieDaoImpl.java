@@ -27,4 +27,9 @@ public class MovieDaoImpl implements MovieDao {
     public void addMovie(Movie movie) {
         getCurrentSession().persist(movie);
     }
+
+  @Override
+  public Movie loadMovieById(final Long movieId) {
+    return (Movie) getCurrentSession().get(Movie.class, movieId);
+  }
 }

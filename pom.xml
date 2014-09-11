@@ -137,6 +137,13 @@
             <version>1.0.4</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-mapper-asl</artifactId>
+            <version>1.9.13</version>
+        </dependency>
+
+
         <!-- logging      -->
         <dependency>
             <groupId>org.slf4j</groupId>
