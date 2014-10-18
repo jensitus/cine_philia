@@ -68,4 +68,8 @@ public class Movie {
     public String getTitle() {
         return title;
     }
+
+    public String get_ID() {
+        return _ID;
+    }
 }

@@ -1,0 +1,45 @@
+<!doctype html>
+
+<html ng-app="myApp">
+<head>
+    <title>movies!</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.9/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.9/angular-resource.js"></script>
+    <script src="/js/movies.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+</head>
+
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-6">
+
+            <div ng-controller="MovieCtrl">
+                <form novalidate class="form-group">
+                    <input type="text" ng-model="id" class="form-control">
+                    <button ng-click="loadMovie(id)" class="btn btn-default">load!</button>
+                </form>
+                <pre>Movie title: {{movie.title}}</pre>
+                <pre>{{movieId}}</pre>
+
+                <pre>{{newData.title}}</pre>
+
+            </div>
+
+            <div ng-view class="row"></div>
+
+            <div ng-controller="MoviesCtrl">
+                <span ng-repeat="movlist in movieList">
+                    <p>{{ movlist.title }}<br>
+                    {{ movlist._ID }}</p>
+                </span>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
