@@ -57,12 +57,19 @@ public class Movie {
     @Column(name = "actors")
     private String[] actors;
 
-    public Movie(String title, String _ID) {
+  public Movie() {
+  }
+
+  public Movie(String title, String _ID) {
         this.title = title;
         this._ID = _ID;
     }
 
     public String getTitle() {
         return title;
+    }
+
+    public String get_ID() {
+        return _ID;
     }
 }

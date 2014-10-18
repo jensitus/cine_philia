@@ -20,11 +20,16 @@ public class MovieDaoImpl implements MovieDao {
 
     @Override
     public List<Movie> getMovies() {
-        return getCurrentSession().createQuery("select _ID from Movie").list();
+        return getCurrentSession().createQuery("from Movie").list();
     }
 
     @Override
     public void addMovie(Movie movie) {
         getCurrentSession().persist(movie);
+    }
+
+    @Override
+    public Movie loadMovieById(final Long movieId) {
+        return (Movie) getCurrentSession().get(Movie.class, movieId);
     }
 }
