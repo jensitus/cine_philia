@@ -1,7 +1,6 @@
  
 In /src/main/resources add these property files:
   - application.properties
-  - thymeleaf.properties
   
 application.properties:
 
