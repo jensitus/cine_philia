@@ -7,9 +7,9 @@
 <body>
 
 <h3>The Theaters</h3>
-<span th:each="theater : ${theaters}">
-    <span th:text="${theater.name}"></span><br />
-    <span th:text="${theater._ID}"></span><br />
+<span th:each="theaters : ${theaters}">
+    <span th:text="${theaters.name}"></span><br />
+    <span th:text="${theaters._id}"></span><br />
 </span>
 
 </body>

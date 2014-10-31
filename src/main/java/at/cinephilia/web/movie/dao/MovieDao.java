@@ -1,6 +1,6 @@
 package at.cinephilia.web.movie.dao;
 
-import at.cinephilia.web.model.Movie;
+import at.cinephilia.model.Movie;
 
 import java.util.List;
 
@@ -11,6 +11,7 @@ public interface MovieDao {
 
     public List<Movie> getMovies();
     public void addMovie(Movie movie);
+    public List<Movie> getMovieIDs();
 
     /**
      * Loads a movie by its id. Returns null if no movie is found.
@@ -19,5 +20,9 @@ public interface MovieDao {
      * @return
      */
     public Movie loadMovieById(Long movieId);
+
+    List getMovieTheaterViaSchedule(String movie_id);
+
+    public Movie loadMovieByMovie_id(String movie_id);
 
 }

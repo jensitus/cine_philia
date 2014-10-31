@@ -1,7 +1,7 @@
 package at.cinephilia.web.movie.controller;
 
 import at.cinephilia.data.DataFromSpiderman;
-import at.cinephilia.web.model.Movie;
+import at.cinephilia.model.Movie;
 import at.cinephilia.web.movie.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -33,7 +33,7 @@ public class GetMovieController {
 
     private List<Movie> getMovieId() {
         List<Movie> movie_id_list;
-        movie_id_list = movieService.getMovies();
+        movie_id_list = movieService.getMovieIDs();
         return movie_id_list;
     }
 

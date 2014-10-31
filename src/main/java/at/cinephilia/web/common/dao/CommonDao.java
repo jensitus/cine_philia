@@ -1,8 +1,9 @@
 package at.cinephilia.web.common.dao;
 
-import at.cinephilia.web.model.Contribute;
-import at.cinephilia.web.model.GenreAsso;
-import at.cinephilia.web.model.Participant;
+import at.cinephilia.model.Contribute;
+import at.cinephilia.model.GenreAsso;
+import at.cinephilia.model.MovieTheater;
+import at.cinephilia.model.Participant;
 
 import java.util.List;
 
@@ -17,6 +18,8 @@ public interface CommonDao {
     public List<Contribute> contributeList();
     public void addGenreAsso(GenreAsso genreAsso);
     public List<GenreAsso> genreAssoList();
-
+    public void addMovieTheater(MovieTheater movieTheater);
+    public List<MovieTheater> getMovie_ID();
+    public List<MovieTheater> getTheater_ID();
 
 }

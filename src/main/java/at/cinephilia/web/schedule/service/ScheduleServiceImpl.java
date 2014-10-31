@@ -1,6 +1,6 @@
 package at.cinephilia.web.schedule.service;
 
-import at.cinephilia.web.model.Schedule;
+import at.cinephilia.model.Schedule;
 import at.cinephilia.web.schedule.dao.ScheduleDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -1,6 +1,6 @@
 package at.cinephilia.web.genre.dao;
 
-import at.cinephilia.web.model.Genre;
+import at.cinephilia.model.Genre;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;

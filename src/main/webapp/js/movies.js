@@ -1,4 +1,16 @@
-var myApp = angular.module('myApp',['ngResource']);
+var myApp = angular.module('myApp',['ngRoute', 'ngResource']);
+
+myApp.config(function($routeProvider) {
+    $routeProvider
+        .when('/', {
+            templateUrl: '/main.html' })
+        .when('/movies', {
+            templateUrl: '/movies.html',
+            controller: 'MoviesCtrl'})
+        .when('/common', {
+            templateUrl: 'common.html' })
+        .otherwise({ redirectTo: '/'})
+});
 
 myApp.controller('MovieCtrl', ['$scope', '$http', '$location', function($scope, $http, $location) {
     //movieController = {};
@@ -15,18 +27,14 @@ myApp.controller('MovieCtrl', ['$scope', '$http', '$location', function($scope, 
 
     };
 
-//    movieController.loadMovie = function (id, $scope, $http) {
-//        $scope.movieId = angular.copy(id);
-//        $http.get('http://localhost:8081/cine/rest/movies/' + $scope.id)
-//            success(function(data) {
-//                $scope.movie = data;
-//            });
-//    }
 }]);
 
 myApp.controller('MoviesCtrl', ['$scope', '$http', function($scope, $http) {
     $http.get('http://localhost:8081/cine/rest/movies/movielist').then(function(movList) {
         $scope.movieList = movList.data;
     })
-
 }]);
+
+
+
+

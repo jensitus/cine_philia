@@ -1,6 +1,6 @@
 package at.cinephilia.data;
 
-import at.cinephilia.web.model.Genre;
+import at.cinephilia.model.Genre;
 import at.cinephilia.web.genre.service.GenreService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

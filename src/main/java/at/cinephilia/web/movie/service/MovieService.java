@@ -1,6 +1,6 @@
 package at.cinephilia.web.movie.service;
 
-import at.cinephilia.web.model.Movie;
+import at.cinephilia.model.Movie;
 
 import java.util.List;
 
@@ -11,6 +11,8 @@ public interface MovieService {
 
     public List<Movie> getMovies();
     public void addMovie(Movie movie);
+    public List<Movie> getMovieIDs();
+    List getMovieTheaterViaSchedule(String movie_id);
 
     /**
      * Loads a movie. Returns null if no movie is found.
@@ -19,4 +21,6 @@ public interface MovieService {
      * @return
      */
     public Movie loadMovie(Long movieId);
+
+    Movie loadMovieByMovie_Id(String movie_id);
 }

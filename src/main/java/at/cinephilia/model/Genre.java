@@ -1,4 +1,4 @@
-package at.cinephilia.web.model;
+package at.cinephilia.model;
 
 import javax.persistence.*;
 
@@ -7,19 +7,19 @@ import javax.persistence.*;
  */
 
 @Entity
-@Table(name = "genres") //, uniqueConstraints = {@UniqueConstraint(columnNames = "id"), @UniqueConstraint(columnNames = "name"), @UniqueConstraint(columnNames = "_ID")})
+@Table(name = "genres") //, uniqueConstraints = {@UniqueConstraint(columnNames = "id"), @UniqueConstraint(columnNames = "name"), @UniqueConstraint(columnNames = "_id")})
 public class Genre {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", unique = true, nullable = false)
     private short id;
 
     @Column(name = "name", unique = true)
     private String name;
 
-    @Column(name = "_ID", unique = true)
-    private String _ID;
+    @Column(name = "_id", unique = true)
+    private String _id;
 
     @Column(name = "number")
     private String number;
@@ -28,9 +28,9 @@ public class Genre {
 
     }
 
-    public Genre(String name, String _ID) {
+    public Genre(String name, String _id) {
         this.name = name;
-        this._ID = _ID;
+        this._id = _id;
     }
 
     public short getId() {
@@ -49,11 +49,11 @@ public class Genre {
         this.name = name;
     }
 
-    public String get_ID() {
-        return _ID;
+    public String get_id() {
+        return _id;
     }
 
-    public void set_ID(String _ID) {
-        this._ID = _ID;
+    public void set_id(String _id) {
+        this._id = _id;
     }
 }

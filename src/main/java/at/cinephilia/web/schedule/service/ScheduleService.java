@@ -1,6 +1,6 @@
 package at.cinephilia.web.schedule.service;
 
-import at.cinephilia.web.model.Schedule;
+import at.cinephilia.model.Schedule;
 
 import java.util.List;
 

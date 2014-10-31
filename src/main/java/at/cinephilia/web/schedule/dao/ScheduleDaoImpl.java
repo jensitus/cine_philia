@@ -1,6 +1,6 @@
 package at.cinephilia.web.schedule.dao;
 
-import at.cinephilia.web.model.Schedule;
+import at.cinephilia.model.Schedule;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +29,6 @@ public class ScheduleDaoImpl implements ScheduleDao {
 
     @Override
     public List<Schedule> getSchedulesID() {
-        return getSession().createQuery("select _ID from Schedule").list();
+        return getSession().createQuery("select _id from Schedule").list();
     }
 }

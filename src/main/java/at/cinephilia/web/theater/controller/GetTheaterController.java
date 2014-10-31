@@ -1,7 +1,7 @@
 package at.cinephilia.web.theater.controller;
 
 import at.cinephilia.data.DataFromSpiderman;
-import at.cinephilia.web.model.Theater;
+import at.cinephilia.model.Theater;
 import at.cinephilia.web.theater.service.TheaterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

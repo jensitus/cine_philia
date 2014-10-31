@@ -1,4 +1,4 @@
-package at.cinephilia.web.model;
+package at.cinephilia.model;
 
 import javax.persistence.*;
 
@@ -7,15 +7,15 @@ import javax.persistence.*;
 public class Participant {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private long id;
 
     @Column(name = "name")
     private String name;
 
-    @Column(name = "_ID", unique = true)
-    private String _ID;
+    @Column(name = "_id", unique = true)
+    private String _id;
 
     @Column(name = "diract")
     private String diract;
@@ -23,16 +23,16 @@ public class Participant {
     public Participant() {
     }
 
-    public Participant(String name, String _ID) {
+    public Participant(String name, String _id) {
         this.name = name;
-        this._ID = _ID;
+        this._id = _id;
     }
 
     public String getName() {
         return name;
     }
 
-    public String get_ID() {
-        return _ID;
+    public String get_id() {
+        return _id;
     }
 }
