@@ -1,15 +1,9 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head lang="en">
-    <meta charset="UTF-8" />
-    <title></title>
-</head>
-<body>
-
-<h3>The Movies</h3>
-<span th:each="movie : ${movies}">
-    <span th:text="${movie.title}"></span><br />
-</span>
-
-</body>
-</html>
+<div ng-controller="MovieCtrl">
+    <span ng-repeat="movlist in movieList">
+        <p>
+            {{ newData.title }}<br>
+            {{ movlist._id }}<br>
+            {{ movlist.id}}
+        </p>
+    </span>
+</div>

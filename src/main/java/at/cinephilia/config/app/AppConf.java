@@ -1,6 +1,9 @@
 package at.cinephilia.config.app;
 
-import org.springframework.context.annotation.*;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
@@ -18,9 +21,8 @@ import java.util.Properties;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = "at.cinephilia")
 @EnableTransactionManagement
-@Import({WebInitializer.class})
+@ComponentScan(basePackages = {"at.cinephilia.model", "at.cinephilia.web"})
 @PropertySource("classpath:application.properties")
 public class AppConf {
 
@@ -56,7 +58,8 @@ public class AppConf {
         return sessionFactoryBean;
     }
 
-    private Properties hibProperties() {
+    @Bean
+    public Properties hibProperties() {
         Properties properties = new Properties();
         properties.put(PROPERTY_NAME_HIBERNATE_DIALECT, env.getRequiredProperty(PROPERTY_NAME_HIBERNATE_DIALECT));
         properties.put(PROPERTY_NAME_HIBERNATE_SHOW_SQL, env.getRequiredProperty(PROPERTY_NAME_HIBERNATE_SHOW_SQL));

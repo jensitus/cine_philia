@@ -1,8 +1,9 @@
 package at.cinephilia.web.common.dao;
 
-import at.cinephilia.web.model.Contribute;
-import at.cinephilia.web.model.GenreAsso;
-import at.cinephilia.web.model.Participant;
+import at.cinephilia.model.Contribute;
+import at.cinephilia.model.GenreAsso;
+import at.cinephilia.model.MovieTheater;
+import at.cinephilia.model.Participant;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,5 +49,20 @@ public class CommonDaoImpl implements CommonDao{
     @Override
     public List<GenreAsso> genreAssoList() {
         return getSession().createQuery("select _ID from GenreAsso").list();
+    }
+
+    @Override
+    public void addMovieTheater(MovieTheater movieTheater) {
+        getSession().persist(movieTheater);
+    }
+
+    @Override
+    public List<MovieTheater> getMovie_ID() {
+        return getSession().createQuery("select movie_id from MovieTheater").list();
+    }
+
+    @Override
+    public List<MovieTheater> getTheater_ID() {
+        return getSession().createQuery("select theater_id from MovieTheater").list();
     }
 }

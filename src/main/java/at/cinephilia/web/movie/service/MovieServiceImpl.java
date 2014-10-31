@@ -1,6 +1,6 @@
 package at.cinephilia.web.movie.service;
 
-import at.cinephilia.web.model.Movie;
+import at.cinephilia.model.Movie;
 import at.cinephilia.web.movie.dao.MovieDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,7 +30,23 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
+    public List getMovieTheaterViaSchedule(String movie_id) {
+        return movieDao.getMovieTheaterViaSchedule(movie_id);
+    }
+
+    @Override
     public Movie loadMovie(final Long movieId) {
         return movieDao.loadMovieById(movieId);
     }
+
+    @Override
+    public List<Movie> getMovieIDs() {
+        return movieDao.getMovieIDs();
+    }
+
+    @Override
+    public Movie loadMovieByMovie_Id(String movie_id) {
+        return movieDao.loadMovieByMovie_id(movie_id);
+    }
+
 }

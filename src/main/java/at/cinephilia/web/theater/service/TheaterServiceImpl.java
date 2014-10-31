@@ -1,6 +1,6 @@
 package at.cinephilia.web.theater.service;
 
-import at.cinephilia.web.model.Theater;
+import at.cinephilia.model.Theater;
 import at.cinephilia.web.theater.dao.TheaterDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,5 +27,15 @@ public class TheaterServiceImpl implements TheaterService {
     @Override
     public List<Theater> theater_id_list() {
         return theaterDao.theater_id_list();
+    }
+
+    @Override
+    public Theater getTheaterByTheater_Id(String theater_id) {
+        return theaterDao.getTheaterByTheater_Id(theater_id);
+    }
+
+    @Override
+    public List<Theater> getTheaterViaSchedule(String movie_id) {
+        return theaterDao.getTheaterViaSchedule(movie_id);
     }
 }

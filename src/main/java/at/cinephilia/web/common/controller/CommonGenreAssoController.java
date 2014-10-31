@@ -3,7 +3,7 @@ package at.cinephilia.web.common.controller;
 import at.cinephilia.data.DataFromSpiderman;
 import at.cinephilia.data.GetTheFuckingHash;
 import at.cinephilia.web.common.service.CommonService;
-import at.cinephilia.web.model.GenreAsso;
+import at.cinephilia.model.GenreAsso;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
