@@ -4,7 +4,6 @@ import at.cinephilia.model.Movie;
 import at.cinephilia.model.Schedule;
 import at.cinephilia.model.Theater;
 import at.cinephilia.web.movie.service.MovieService;
-import at.cinephilia.web.theater.service.TheaterService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,95 +30,70 @@ public class MovieRestController {
     @Autowired
     private MovieService movieService;
 
-    @Autowired
-    private TheaterService theaterService;
-
     @ResponseBody
     @RequestMapping(value = "/{movieId}", method = RequestMethod.GET)
-    public ResponseEntity<Map> getMovie(@PathVariable String movieId) throws IOException {
+    public ResponseEntity<List> getMovie(@PathVariable String movieId) throws IOException {
         Long movieIdLong = Long.parseLong(movieId);
         Movie ret = this.movieService.loadMovie(movieIdLong);
         String movie_id = ret.get_id();
         List movieSchedulesTheaters = movieService.getMovieTheaterViaSchedule(movie_id);
-        logger.debug("himmel: {}", movieSchedulesTheaters);
 
-        Map<String, Map> singleMovieMap = new HashMap<>();
-        Map<String, List> innerMap = new HashMap<>();
 
+        Map<String, Map<String, Map<String, List<Object>>>> singleMovieMap = new HashMap<String, Map<String, Map<String, List<Object>>>>();
+        Map<String, Map<String, List<Object>>> datumMap = new HashMap<String, Map<String, List<Object>>>();
+        Map<String, List<Object>> theaterMap = new HashMap<String, List<Object>>();
+        Map<String, Map> movieObjectMap;
+        List<Object> scheduleList = new ArrayList<Object>();
         String movieTitle = null;
         String datum = null;
-
-        Map<String, List> timeMap = new HashMap<>();
-
-        List list = new ArrayList();
-        List tupel = new ArrayList();
-
-        Map<String, List> schedulesByDate = new HashMap<String, List>();
+        String theater_name = null;
+        Movie movie = null;
+        List<Movie> mov = new ArrayList<>();
 
         Iterator mtvs = movieSchedulesTheaters.iterator();
         while ( mtvs.hasNext()) {
             Object[] result = (Object[]) mtvs.next();
-            Movie movie = (Movie) result[0];
+            movie = (Movie) result[0];
             Schedule schedule = (Schedule) result[1];
             Theater theater = (Theater) result[2];
             datum = schedule.getDat();
             movieTitle = movie.getTitle();
+            theater_name = theater.getName();
 
-            List schedules = schedulesByDate.get(datum);
-            if (schedules == null) {
-                schedules = new ArrayList<Schedule>();
+
+
+            theaterMap = datumMap.get(datum);
+            if (theaterMap == null) {
+                theaterMap = new HashMap<String, List<Object>>();
             }
-            schedules.add(schedule);
-            schedules.add(theater);
-            List blocScheduleTheater = new ArrayList();
-            blocScheduleTheater.add(schedule);
-            blocScheduleTheater.add(theater);
-            schedulesByDate.put(datum, schedules);
-            singleMovieMap.put(movieTitle, schedulesByDate);
-/*
-//            if (schedule.getDat() == datum) {
-//                list.add(schedule);
-//                list.add(schedule);
-//                innerMap.put(datum, list);
-//                outerMap.put(movieTitle, innerMap);
-//            }
-//            tupel.add(movie);
-//            tupel.add(schedule);
-//            tupel.add(theater);
+            scheduleList = theaterMap.get(theater_name);
+            if (scheduleList == null) {
+                scheduleList = new ArrayList<Object>();
+            }
 
+            System.out.println("#################################");
+            System.out.println();
+            System.out.println();
+            logger.debug("Object[] movieTheater: {} ");
+            System.out.println();
+            System.out.println();
+            System.out.println();
+            System.out.println("#################################");
+            scheduleList.add(schedule);
 
+            theaterMap.put(theater_name, scheduleList);
+            datumMap.put(datum, theaterMap);
 
-
-            logger.debug("datum {} movietitle {}", datum, movieTitle);
-        }
-        //list.add(tupel);
-
-        logger.debug("{}", "mapmapmapmapmapmapmapmapmapmapmapmapmapmapmap");
-        logger.debug("innerMap: ", innerMap);
-        logger.debug("outerMap: ", outerMap);
-
-        for (Object outerList : movieSchedulesTheaters) {
-
-            logger.debug("{}", "###########################");
-            logger.debug("Object outerList: {}", outerList );
-
-//            for (Object o : outerList) {
-//                if (o.getClass() == Movie.class) {
-//                    Movie m = (Movie) o;
-//                    movieTitle = m.getTitle();
-//                } else if (o.getClass() == Schedule.class) {
-//                    Schedule s = (Schedule) o;
-//                    datum = s.getDat();
-//                }
-               //}
-               */
         }
 
+        Map<String, Movie> movMap = new HashMap<>();
+        movMap.put("theMovie", movie);
 
-        if (ret == null){
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        return new ResponseEntity<Map>(singleMovieMap, HttpStatus.OK);
+        singleMovieMap.put(movieTitle, datumMap);
+        ResponseEntity entity;
+
+
+        return new ResponseEntity(singleMovieMap, HttpStatus.OK);
     }
 
     @ResponseBody

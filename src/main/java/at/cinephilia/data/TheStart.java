@@ -51,7 +51,7 @@ public class TheStart {
 
         StringBuilder sb = new StringBuilder();
         for (int i=0; i < bytes.length; i++) {
-            sb.append(Integer.toString((bytes[i] & 0xff) + 0x2, 16).substring(1));
+            sb.append(Integer.toString((bytes[i] & 0xff) + 0x1, 16).substring(1));
         }
 
         generated = sb.toString();

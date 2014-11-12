@@ -11,7 +11,14 @@ public interface TheaterDao {
 
     public void addTheater(Theater theater);
     public List<Theater> theater_id_list();
+
+    List loadTheaterById(int id);
+
+    List<Theater> get_theaters();
+
     List<Theater> getTheaterViaSchedule(String movie_id);
 
     Theater getTheaterByTheater_Id(String theater_id);
+
+
 }

@@ -1,0 +1,25 @@
+<div ng-controller="MovieCtrl">
+
+    <div ng-repeat="(movie, value) in show_movie">
+        <span><h4>{{movie}}</h4></span><br>
+            <span ng-repeat="(datum, theater_map) in value">
+                <b>{{ datum }}</b><br>
+                <span ng-repeat="(theater, time_map) in theater_map">
+
+                <b>{{ theater }}</b><br>
+                    <span ng-repeat="t in time_map">
+                        {{t.tim}}<br>
+                    </span>
+            </span>
+        </span>
+
+    </div>
+    <hr>
+    <pre>
+        {{ show_movie | json }}
+    </pre>
+    <hr>
+</div>
+
+
+

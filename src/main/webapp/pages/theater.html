@@ -1,0 +1,16 @@
+<div ng-controller="TheaterCtrl">
+    <span ng-repeat="(theater, value) in show_theater">
+        {{ theater }}<br>
+        <span ng-repeat="(datum, movies) in value">
+            {{ datum }}<br>
+            <span ng-repeat="(movie, scheds) in movies">
+                {{ movie }}<br>
+                <span ng-repeat="time in scheds">
+                    {{ time.tim }}
+                </span>
+                <hr>
+            </span>
+        </span>
+
+    </span>
+</div>
