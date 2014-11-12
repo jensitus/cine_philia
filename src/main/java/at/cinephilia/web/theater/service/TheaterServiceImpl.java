@@ -38,4 +38,14 @@ public class TheaterServiceImpl implements TheaterService {
     public List<Theater> getTheaterViaSchedule(String movie_id) {
         return theaterDao.getTheaterViaSchedule(movie_id);
     }
+
+    @Override
+    public List loadTheaterById(int id) {
+        return theaterDao.loadTheaterById(id);
+    }
+
+    @Override
+    public List<Theater> get_theaters() {
+        return theaterDao.get_theaters();
+    }
 }

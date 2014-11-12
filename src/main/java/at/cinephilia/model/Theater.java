@@ -8,7 +8,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "theaters", uniqueConstraints = {@UniqueConstraint(columnNames = "_id")})
-public class Theater {
+public class Theater implements Comparable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -115,5 +115,10 @@ public class Theater {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        return 0;
     }
 }

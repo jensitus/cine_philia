@@ -1,7 +1,9 @@
 <div ng-controller="MoviesCtrl">
     <span ng-repeat="movlist in movieList">
-        <p>{{ movlist.title }}<br>
+        <p>
+            <a href="/#/movie/{{movlist.id}}">{{ movlist.title }}</a><br>
             {{ movlist._id }}<br>
-            {{ movlist.id}}</p>
+            {{ movlist.id}}
+        </p>
     </span>
 </div>

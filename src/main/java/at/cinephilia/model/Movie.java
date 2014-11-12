@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "movies", uniqueConstraints = {@UniqueConstraint(columnNames = "_id")})
-public class Movie implements Serializable {
+public class Movie implements Serializable, Comparable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -70,6 +70,11 @@ public class Movie implements Serializable {
 
     public void set_id(String _id) {
         this._id = _id;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        return 0;
     }
 
     /*@Column(name = "runtime")

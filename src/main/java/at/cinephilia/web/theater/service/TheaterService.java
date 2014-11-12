@@ -15,5 +15,7 @@ public interface TheaterService {
     public List<Theater> theater_id_list();
     public Theater getTheaterByTheater_Id(String theater_id);
     List<Theater> getTheaterViaSchedule(String movie_id);
+    List loadTheaterById(int id);
+    List<Theater> get_theaters();
 
 }

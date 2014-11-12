@@ -34,6 +34,19 @@ public class TheaterDaoImpl implements TheaterDao {
     }
 
     @Override
+    public List loadTheaterById(int id) {
+        String hql = "from Theater t, Schedule s, Movie m where t.id = :id and t._id = s.theater_id and s.movie_id = m._id";
+        Query query = getCurrentSession().createQuery(hql);
+        query.setParameter("id", id);
+        return query.list();
+    }
+
+    @Override
+    public List<Theater> get_theaters() {
+        return getCurrentSession().createQuery("from Theater").list();
+    }
+
+    @Override
     public List<Theater> getTheaterViaSchedule(String movie_id) {
         String hql = "from Movie m, Schedule s, Theater t where m._id = s.movie_id and s.theater_id = t._id and m._id = :movie_id";
         Query query = getCurrentSession().createQuery(hql);

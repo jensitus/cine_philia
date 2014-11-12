@@ -51,43 +51,6 @@ public class MovieDaoImpl implements MovieDao {
         Query query = getCurrentSession().createQuery(hql);
         query.setParameter("movie_id", movie_id);
         List movie_theaters_via_schedules = query.list();
-//        Iterator mtvs = movie_theaters_via_schedules.listIterator();
-//        System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++");
-//        System.out.println();
-//        System.out.println();
-//        logger.debug("mein movie: {}", movie_theaters_via_schedules);
-//        System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++");
-//        System.out.println();
-//        System.out.println();
-//        for (Object platzhalter : movie_theaters_via_schedules) {
-//            logger.debug("for: {}", platzhalter);
-//            System.out.println(platzhalter);
-//        }
-//        while ( mtvs.hasNext() ) {
-//            Object[] result = (Object[]) mtvs.next();
-//            Movie movie = (Movie) result[0];
-//            Schedule schedule = (Schedule) result[1];
-//            Theater theater = (Theater) result[2];
-//            System.out.println("theater: " + theater.getName());
-//            System.out.println("movie: " + movie.getTitle());
-//            System.out.println("Uhrzeit: " + schedule.getDatetime());
-//        }
-
-
-
-//        while ( mtvs.hasNext() ) {
-//
-//            System.out.println(mtvs.getClass());
-//            System.out.println(mtvs.next().getClass());
-//
-//            Object variable = mtvs.next();
-//            System.out.println("while +++++++ : " + variable.getClass());
-//
-//            //System.out.println(movie_theaters_via_schedules.next().getClass());
-//        }
-        System.out.println();
-        System.out.println();
-        System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++");
         return movie_theaters_via_schedules;
     }
 
