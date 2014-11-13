@@ -1,5 +1,6 @@
 package at.cinephilia.web.rest;
 
+import at.cinephilia.model.Genre;
 import at.cinephilia.model.Movie;
 import at.cinephilia.model.Schedule;
 import at.cinephilia.model.Theater;
@@ -34,10 +35,31 @@ public class MovieRestController {
     @RequestMapping(value = "/{movieId}", method = RequestMethod.GET)
     public ResponseEntity<List> getMovie(@PathVariable String movieId) throws IOException {
         Long movieIdLong = Long.parseLong(movieId);
+        System.out.println("??????????????????????????????");
+        System.out.println();
+        logger.debug("movieIdLong: {} ", movieIdLong);
         Movie ret = this.movieService.loadMovie(movieIdLong);
         String movie_id = ret.get_id();
         List movieSchedulesTheaters = movieService.getMovieTheaterViaSchedule(movie_id);
 
+        List<Genre> genreList = new ArrayList<>();
+
+        List<Genre> genres = movieService.loadGenreByMovie(movieIdLong);
+        for (Genre genre : genres) {
+            String name = genre.getName();
+            System.out.println("++++++++++++++++++++++++++++++++");
+            System.out.println();
+            System.out.println(genre.getName());
+            System.out.println(genre.get_id());
+            System.out.println();
+            System.out.println("++++++++++++++++++++++++++++++++");
+            genreList.add(genre);
+        }
+        System.out.println();
+        System.out.println("++++++++++++++++++++++++++++++++");
+        logger.debug("genreList: {} ", genreList);
+        System.out.println();
+        System.out.println("++++++++++++++++++++++++++++++++");
 
         Map<String, Map<String, Map<String, List<Object>>>> singleMovieMap = new HashMap<String, Map<String, Map<String, List<Object>>>>();
         Map<String, Map<String, List<Object>>> datumMap = new HashMap<String, Map<String, List<Object>>>();
@@ -71,14 +93,6 @@ public class MovieRestController {
                 scheduleList = new ArrayList<Object>();
             }
 
-            System.out.println("#################################");
-            System.out.println();
-            System.out.println();
-            logger.debug("Object[] movieTheater: {} ");
-            System.out.println();
-            System.out.println();
-            System.out.println();
-            System.out.println("#################################");
             scheduleList.add(schedule);
 
             theaterMap.put(theater_name, scheduleList);
@@ -91,9 +105,22 @@ public class MovieRestController {
 
         singleMovieMap.put(movieTitle, datumMap);
         ResponseEntity entity;
+        List lastList = new ArrayList();
+        lastList.add(movie);
+        lastList.add(genreList);
+        lastList.add(singleMovieMap);
 
+        System.out.println("#################################");
+        System.out.println();
+        System.out.println();
+        logger.debug("singleMovieMap: {} ", singleMovieMap);
+        logger.debug("lastList : {} ", lastList);
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println("#################################");
 
-        return new ResponseEntity(singleMovieMap, HttpStatus.OK);
+        return new ResponseEntity(lastList, HttpStatus.OK);
     }
 
     @ResponseBody

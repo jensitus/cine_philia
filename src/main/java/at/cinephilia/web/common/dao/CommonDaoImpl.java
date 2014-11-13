@@ -48,7 +48,7 @@ public class CommonDaoImpl implements CommonDao{
 
     @Override
     public List<GenreAsso> genreAssoList() {
-        return getSession().createQuery("select _ID from GenreAsso").list();
+        return getSession().createQuery("select _id from GenreAsso").list();
     }
 
     @Override

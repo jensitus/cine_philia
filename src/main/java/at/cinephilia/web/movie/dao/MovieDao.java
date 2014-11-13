@@ -1,5 +1,6 @@
 package at.cinephilia.web.movie.dao;
 
+import at.cinephilia.model.Genre;
 import at.cinephilia.model.Movie;
 
 import java.util.List;
@@ -25,4 +26,6 @@ public interface MovieDao {
 
     public Movie loadMovieByMovie_id(String movie_id);
 
+
+    List<Genre> loadGenreByMovie(Long id);
 }

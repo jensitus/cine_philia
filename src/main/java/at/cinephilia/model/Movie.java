@@ -22,19 +22,47 @@ public class Movie implements Serializable, Comparable {
     @Column(name = "_id", unique = true)
     private String _id;
 
-//    @ManyToMany(fetch = FetchType.EAGER, targetEntity = Theater.class)
-//    @JoinTable(name = "movie_theaters")
-//    private Set<Theater> theaters = new HashSet<>();
-//
-//    public Set<Theater> getTheaters() {
-//        return theaters;
-//    }
-//
-//    public void setTheaters(Set<Theater> theaters) {
-//        this.theaters = theaters;
-//    }
+    @Column(name = "runtime")
+    private int runtime;
+
+    @Column(name = "country")
+    private String country;
+
+    @Column(name = "year")
+    private int year;
+
+    @Column(name = "originaltitle")
+    private String originaltitle;
+
+    @Column(name = "typename")
+    private String typename;
+
+    @Column(name = "shortdescription", columnDefinition = "text", nullable = true)
+    private String shortdescription;
+
+    @Column(name = "imageurl")
+    private String imageurl;
+
+    @Column(name = "upcoming", columnDefinition = "boolean default true")
+    private Boolean upcoming;
+
+    @Column(name = "tmdb_id")
+    private int tmdb_id;
 
     public Movie() {
+    }
+
+    public Movie(String title, String _id, int runtime, String country, int year, String originaltitle, String typename, String shortdescription, String imageurl, Boolean upcoming) {
+        this.title = title;
+        this._id = _id;
+        this.runtime = runtime;
+        this.country = country;
+        this.year = year;
+        this.originaltitle = originaltitle;
+        this.typename = typename;
+        this.shortdescription = shortdescription;
+        this.imageurl = imageurl;
+        this.upcoming = upcoming;
     }
 
     public Movie(long id, String title, String _id) {
@@ -72,39 +100,7 @@ public class Movie implements Serializable, Comparable {
         this._id = _id;
     }
 
-    @Override
-    public int compareTo(Object o) {
-        return 0;
-    }
-
-    /*@Column(name = "runtime")
-    private short runtime;
-
-    @Column(name = "country")
-    private String country;
-
-    @Column(name = "year")
-    private short year;
-
-    @Column(name = "originaltitle")
-    private String originaltitle;
-
-    @Column(name = "typename")
-    private String typename;
-
-    @Column(name = "shortdescription")
-    private String shortdescription;
-
-    @Column(name = "imageurl")
-    private String imageurl;
-
-    @Column(name = "upcoming", columnDefinition = "boolean default true")
-    private Boolean upcoming;
-
-    @Column(name = "tmdb_id")
-    private short tmdb_id;
-
-    public short getRuntime() {
+    public int getRuntime() {
         return runtime;
     }
 
@@ -120,7 +116,7 @@ public class Movie implements Serializable, Comparable {
         this.country = country;
     }
 
-    public short getYear() {
+    public int getYear() {
         return year;
     }
 
@@ -168,13 +164,19 @@ public class Movie implements Serializable, Comparable {
         this.upcoming = upcoming;
     }
 
-    public short getTmdb_id() {
+    public int getTmdb_id() {
         return tmdb_id;
     }
 
     public void setTmdb_id(short tmdb_id) {
         this.tmdb_id = tmdb_id;
     }
-    */
+
+    @Override
+    public int compareTo(Object o) {
+        return 0;
+    }
+
+
 
 }
