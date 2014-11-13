@@ -1,5 +1,6 @@
 package at.cinephilia.web.movie.dao;
 
+import at.cinephilia.model.Genre;
 import at.cinephilia.model.Movie;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -80,6 +81,24 @@ public class MovieDaoImpl implements MovieDao {
             return m;
         }
 
+    }
+
+    @Override
+    public List<Genre> loadGenreByMovie(Long id) {
+        System.out.println("??????????????????????????????");
+        System.out.println();
+        logger.debug("id {} ", id);
+        String hql = "select g from Movie m, Genre g, GenreAsso ga where m.id = :movieId and m._id = ga.movie_id and ga.genre_id = g._id";
+        Query query = getCurrentSession().createQuery(hql);
+        query.setParameter("movieId", id);
+        List<Genre> genres = query.list();
+        System.out.println("??????????????????????????????");
+        System.out.println();
+        System.out.println(genres);
+        logger.debug("genres: {} ", genres);
+        System.out.println();
+        System.out.println("??????????????????????????????");
+        return genres;
     }
 
 

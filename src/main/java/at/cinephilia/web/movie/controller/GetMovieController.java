@@ -42,15 +42,60 @@ public class GetMovieController {
         List<Movie> movies = new ArrayList<>();
         Movie movie;
         String title;
-        String _ID;
+        String _id;
+
+        int runtime = 0;
+        String country = null;
+        int year = 0;
+        String originaltitle = null;
+        String typename;
+        String shortdescription = null;
+        String imageurl = null;
+        Boolean upcoming;
+        //short tmdb_id;
+
         for (JsonObject jsonObject : getJsonArray().getValuesAs(JsonObject.class)) {
             title = jsonObject.getString("title");
-            _ID = jsonObject.getString("_ID");
-            if (movie_ids.contains(_ID)) {
+            _id = jsonObject.getString("_ID");
+            if (jsonObject.isNull("runtime")) {
+                // do nothing
+            } else {
+                runtime = jsonObject.getInt("runtime");
+            }
+            if (jsonObject.isNull("land")) {
+                // do nothing
+            } else {
+                country = jsonObject.getString("land");
+            }
+            if (jsonObject.isNull("year")) {
+                // do nothing
+            } else {
+                year = jsonObject.getInt("year");
+            }
+            if (jsonObject.isNull("originaltitle")) {
+                // do noting
+            } else  {
+                originaltitle = jsonObject.getString("originaltitle");
+            }
+            typename = jsonObject.getString("typename");
+            if (jsonObject.isNull("shortdescription")) {
+                // do nothing
+            } else {
+                shortdescription = jsonObject.getString("shortdescription");
+            }
+            if (jsonObject.isNull("imageurl")) {
+                // do nothing
+            } else {
+                imageurl = jsonObject.getString("imageurl");
+            }
+            upcoming = jsonObject.getBoolean("upcoming");
+            //tmdb_id = (short) jsonObject.getInt("tmdb_id");
 
+            if (movie_ids.contains(_id)) {
+                // do nothing
             } else {
                 System.out.println(title);
-                movie = new Movie(title, _ID);
+                movie = new Movie(title, _id, runtime, country, year, originaltitle, typename, shortdescription, imageurl, upcoming);
                 System.out.println(movie);
                 movieService.addMovie(movie);
                 movies.add(movie);

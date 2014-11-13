@@ -1,5 +1,6 @@
 package at.cinephilia.web.movie.service;
 
+import at.cinephilia.model.Genre;
 import at.cinephilia.model.Movie;
 import at.cinephilia.web.movie.dao.MovieDao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,6 +48,11 @@ public class MovieServiceImpl implements MovieService {
     @Override
     public Movie loadMovieByMovie_Id(String movie_id) {
         return movieDao.loadMovieByMovie_id(movie_id);
+    }
+
+    @Override
+    public List<Genre> loadGenreByMovie(Long id) {
+        return movieDao.loadGenreByMovie(id);
     }
 
 }

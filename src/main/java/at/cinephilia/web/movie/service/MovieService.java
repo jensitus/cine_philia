@@ -1,5 +1,6 @@
 package at.cinephilia.web.movie.service;
 
+import at.cinephilia.model.Genre;
 import at.cinephilia.model.Movie;
 
 import java.util.List;
@@ -23,4 +24,6 @@ public interface MovieService {
     public Movie loadMovie(Long movieId);
 
     Movie loadMovieByMovie_Id(String movie_id);
+
+    List<Genre> loadGenreByMovie(Long id);
 }

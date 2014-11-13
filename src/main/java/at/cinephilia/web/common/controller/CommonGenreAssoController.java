@@ -36,17 +36,17 @@ public class CommonGenreAssoController {
     private List<GenreAsso> getGenreAssoFromJson(List<GenreAsso> genreAssoListId) throws IOException, NoSuchAlgorithmException {
         List<GenreAsso> genre_asso = new ArrayList<>();
         GenreAsso genreAsso;
-        String _ID;
-        String movie_ID;
-        String genre_ID;
+        String _id;
+        String movie_id;
+        String genre_id;
         for (JsonObject jsonObject : getParticipantJsonArray().getValuesAs(JsonObject.class)) {
-            movie_ID = jsonObject.getString("movie_ID");
-            genre_ID = jsonObject.getString("genre_ID");
-            _ID = new GetTheFuckingHash().getAMd5Hash(movie_ID, genre_ID);
-            if (genreAssoListId.contains(_ID)) {
+            movie_id = jsonObject.getString("movie_ID");
+            genre_id = jsonObject.getString("genre_ID");
+            _id = new GetTheFuckingHash().getAMd5Hash(movie_id, genre_id);
+            if (genreAssoListId.contains(_id)) {
 
             } else {
-                genreAsso = new GenreAsso(_ID, movie_ID, genre_ID);
+                genreAsso = new GenreAsso(_id, movie_id, genre_id);
                 commonService.addGenreAsso(genreAsso);
                 genre_asso.add(genreAsso);
             }
